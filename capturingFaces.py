@@ -66,6 +66,7 @@ import numpy as np
 
 #Capturando rostros
 dataPath = 'C:/Users/MINEDUCYT/Desktop/ReconocimientoFacial/Data'
+
 personName = input("Digita tu nombre: ")
 personPath = dataPath + '/' + personName
 
