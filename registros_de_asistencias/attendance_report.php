@@ -30,27 +30,27 @@ También tengo canal de YouTube: https://www.youtube.com/channel/UCroP4BTWjfM0Ck
 include_once "header.php";
 include_once "nav.php";
 include_once "functions.php";
-$inicio = date("Y-m-d");
-$final = date("Y-m-d");
-if (isset($_GET["inicio"])) {
-    $inicio = $_GET["inicio"];
+$start = date("Y-m-d");
+$end = date("Y-m-d");
+if (isset($_GET["start"])) {
+    $start = $_GET["start"];
 }
-if (isset($_GET["final"])) {
-    $fin = $_GET["final"];
+if (isset($_GET["end"])) {
+    $end = $_GET["end"];
 }
-$alumnos = getEmployeesWithAttendanceCount($inicio, $final);
+$alumnos = getEmployeesWithAttendanceCount($start, $end);
 ?>
 <div class="row">
     <div class="col-12">
-        <h1 class="text-center">Reporte de asistencias</h1>
+        <h1 class="text-center">Reporte de asistencias de alumnos</h1>
     </div>
     <div class="col-12">
 
         <form action="attendance_report.php" class="form-inline mb-2">
             <label for="start">Inicio:&nbsp;</label>
-            <input required id="start" type="date" name="start" value="<?php echo $inicio ?>" class="form-control mr-2">
+            <input required id="start" type="date" name="start" value="<?php echo $start ?>" class="form-control mr-2">
             <label for="end">Final:&nbsp;</label>
-            <input required id="end" type="date" name="end" value="<?php echo $final ?>" class="form-control">
+            <input required id="end" type="date" name="end" value="<?php echo $end ?>" class="form-control">
             <button class="btn btn-success ml-2">Mostrar datos</button>
         </form>
     </div>

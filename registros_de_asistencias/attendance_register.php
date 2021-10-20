@@ -36,8 +36,8 @@ include_once "nav.php";
     </div>
     <div class="col-12">
         <div class="form-inline mb-2">
-            <label for="date">Fecha: &nbsp;</label>
-            <input @change="refreshEmployeesList" v-model="date" name="date" id="date" type="date" class="form-control">
+            <label for="fecha">Fecha: &nbsp;</label>
+            <input @change="refreshEmployeesList" v-model="fecha" name="fecha" id="fecha" type="date" class="form-control">
             <button @click="save" class="btn btn-success ml-2">Guardar</button>
         </div>
     </div>
@@ -55,10 +55,10 @@ include_once "nav.php";
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="alumnos in alumnos">
-                        <td>{{alumnos.nombre}}</td>
+                    <tr v-for="alumno in alumnos">
+                        <td>{{alumno.nombre}}</td>
                         <td>
-                            <select v-model="alumnos_asistencias.status" class="form-control">
+                            <select v-model="alumno.status" class="form-control">
                                 <option disabled value="unset">--Select--</option>
                                 <option value="presente">Presente</option>
                                 <option value="ausente">Ausente</option>

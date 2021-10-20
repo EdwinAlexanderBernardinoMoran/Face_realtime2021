@@ -37,7 +37,7 @@ $alumnos = getEmployees();
         <h1 class="text-center">Alumnos</h1>
     </div>
     <div class="col-12">
-        <a href="employee_add.php" class="btn btn-info mb-2">Agregar un empleado <i class="fa fa-plus"></i></a>
+        <a href="employee_add.php" class="btn btn-info mb-2">Agregar alumno <i class="fa fa-plus"></i></a>
     </div>
     <div class="col-12">
         <div class="table-responsive">
@@ -45,7 +45,7 @@ $alumnos = getEmployees();
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nombre</th>
+                        <th>Nombre completo</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>

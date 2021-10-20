@@ -32,5 +32,5 @@ if (!isset($_GET["date"])) {
 }
 include_once "functions.php";
 $fecha = $_GET["date"];
-$fecha = getAttendanceDataByDate($fecha);
+$datos = getAttendanceDataByDate($fecha);
 echo json_encode($datos);

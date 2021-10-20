@@ -27,12 +27,12 @@ También tengo canal de YouTube: https://www.youtube.com/channel/UCroP4BTWjfM0Ck
 ------------------------------------------------------------------------------------------------
 */ ?>
 <?php
-if (!isset($_POST["name"]) || !isset($_POST["id"])) {
+if (!isset($_POST["nombre"]) || !isset($_POST["id"])) {
     exit("No data provided");
 }
 include_once "functions.php";
-$name = $_POST["name"];
+$nombre = $_POST["nombre"];
 $id = $_POST["id"];
-updateEmployee($name, $id);
+updateEmployee($nombre, $id);
 header("Location: employees.php");
 
