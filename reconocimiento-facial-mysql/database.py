@@ -23,22 +23,22 @@ def registerUser(name, photo):
     inserted = 0
 
     try:
-        con = db.connect(host=keys["host"], user=keys["user"], password=keys["password"], database=keys["database"])
-        cursor = con.cursor()
+        conexion = db.connect(host='localhost', user='root', password='', database='alumnos')
+        cursor = conexion.cursor()
         sql = "INSERT INTO `user`(name, photo) VALUES (%s,%s)"
         pic = convertToBinaryData(photo)
 
         if pic:
             cursor.execute(sql, (name, pic))
-            con.commit()
+            conexion.commit()
             inserted = cursor.rowcount
             id = cursor.lastrowid
     except db.Error as e:
-        print(f"Failed inserting image: {e}")
+        print(f"Fallo al insertar la imagen: {e}")
     finally:
-        if con.is_connected():
+        if conexion.is_connected():
             cursor.close()
-            con.close()
+            conexion.close()
     return {"id": id, "affected":inserted}
 
 def getUser(name, path):
@@ -46,8 +46,8 @@ def getUser(name, path):
     rows = 0
 
     try:
-        con = db.connect(host=keys["host"], user=keys["user"], password=keys["password"], database=keys["database"])
-        cursor = con.cursor()
+        conexion = db.connect(host='localhost', user='root', password='', database='alumnos')
+        cursor = conexion.cursor()
         sql = "SELECT * FROM `user` WHERE name = %s"
 
         cursor.execute(sql, (name,))
@@ -58,9 +58,9 @@ def getUser(name, path):
             write_file(row[2], path)
         rows = len(records)
     except db.Error as e:
-        print(f"Failed to read image: {e}")
+        print(f"Fallo al leer la imagen: {e}")
     finally:
-        if con.is_connected():
+        if conexion.is_connected():
             cursor.close()
-            con.close()
+            conexion.close()
     return {"id": id, "affected": rows}
