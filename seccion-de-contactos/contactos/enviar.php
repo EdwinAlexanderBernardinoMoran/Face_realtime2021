@@ -15,6 +15,7 @@ require 'PHPMailer/SMTP.php';
 
 $mail = new PHPMailer(true);
 
+
 try {
     //Server settings
     $mail->SMTPDebug = 0;                      //Enable verbose debug output

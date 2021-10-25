@@ -7,7 +7,7 @@
     $email = $_POST['email'];
 
     $header = "Enviado desde la pagina de FACE-REALTIME";
-    $mensajeCompleto = $mensaje . "\nAtentamente: " . $nombre
+    $mensajeCompleto = $mensaje . "\nAtentamente: " . $nombre;
 
     mail($destinatario, $asunto, $mensajeCompleto, $header);
     echo "<script>alert('correo enviado exitosamente')</script>";
