@@ -1,31 +1,5 @@
 <?php
-/*
-
-  ____          _____               _ _           _       
- |  _ \        |  __ \             (_) |         | |      
- | |_) |_   _  | |__) |_ _ _ __ _____| |__  _   _| |_ ___ 
- |  _ <| | | | |  ___/ _` | '__|_  / | '_ \| | | | __/ _ \
- | |_) | |_| | | |  | (_| | |   / /| | |_) | |_| | ||  __/
- |____/ \__, | |_|   \__,_|_|  /___|_|_.__/ \__, |\__\___|
-         __/ |                               __/ |        
-        |___/                               |___/         
-    
-____________________________________
-/ Si necesitas ayuda, contáctame en \
-\ https://parzibyte.me               /
- ------------------------------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-Creado por Parzibyte (https://parzibyte.me).
-------------------------------------------------------------------------------------------------
-Si el código es útil para ti, puedes agradecerme siguiéndome: https://parzibyte.me/blog/sigueme/
-Y compartiendo mi blog con tus amigos
-También tengo canal de YouTube: https://www.youtube.com/channel/UCroP4BTWjfM0CkGB6AFUoBg?sub_confirmation=1
-------------------------------------------------------------------------------------------------
-*/ ?>
+?>
 <?php
 include_once "header.php";
 include_once "nav.php";
@@ -37,7 +11,7 @@ include_once "nav.php";
     <div class="col-12">
         <div class="form-inline mb-2">
             <label for="fecha">Fecha: &nbsp;</label>
-            <input @change="refreshEmployeesList" v-model="fecha" name="fecha" id="fecha" type="date" class="form-control">
+            <input @change="refreshAlumnosList" v-model="fecha" name="fecha" id="fecha" type="date" class="form-control">
             <button @click="save" class="btn btn-success ml-2">Guardar</button>
         </div>
     </div>
@@ -83,7 +57,7 @@ include_once "nav.php";
         }),
         async mounted() {
             this.fecha = this.getTodaysDate();
-            await this.refreshEmployeesList();
+            await this.refreshAlumnosList();
         },
         methods: {
             getTodaysDate() {
@@ -106,7 +80,7 @@ include_once "nav.php";
                     fecha: this.fecha,
                     alumnos: alumnosAsignados,
                 };
-                const respuesta = await fetch("./save_attendance_data.php", {
+                const respuesta = await fetch("./save_asistencia_data.php", {
                     method: "POST",
                     body: JSON.stringify(cargaUtil),
                 });
@@ -115,9 +89,9 @@ include_once "nav.php";
                     duration: 1000,
                 });
             },
-            async refreshEmployeesList() {
+            async refreshAlumnosList() {
                 // Get all employees
-                let respuesta = await fetch("./get_employees_ajax.php");
+                let respuesta = await fetch("./get_alumnos_ajax.php");
                 let alumnos = await respuesta.json();
                 // Set default status: unset
                 let DiccionarioAlumnos = {};
@@ -130,7 +104,7 @@ include_once "nav.php";
                     }
                 });
                 // Get attendance data, if any
-                respuesta = await fetch(`./get_attendance_data_ajax.php?date=${this.fecha}`);
+                respuesta = await fetch(`./get_asistencia_data_ajax.php?date=${this.fecha}`);
                 let datos_asistencia = await respuesta.json();
                 // Refresh attendance data in each employee, if any
                 datos_asistencia.forEach(detalle_asistencia => {

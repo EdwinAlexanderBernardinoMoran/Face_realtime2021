@@ -1,32 +1,7 @@
 <?php
-/*
-
-  ____          _____               _ _           _       
- |  _ \        |  __ \             (_) |         | |      
- | |_) |_   _  | |__) |_ _ _ __ _____| |__  _   _| |_ ___ 
- |  _ <| | | | |  ___/ _` | '__|_  / | '_ \| | | | __/ _ \
- | |_) | |_| | | |  | (_| | |   / /| | |_) | |_| | ||  __/
- |____/ \__, | |_|   \__,_|_|  /___|_|_.__/ \__, |\__\___|
-         __/ |                               __/ |        
-        |___/                               |___/         
-    
-____________________________________
-/ Si necesitas ayuda, contáctame en \
-\ https://parzibyte.me               /
- ------------------------------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-Creado por Parzibyte (https://parzibyte.me).
-------------------------------------------------------------------------------------------------
-Si el código es útil para ti, puedes agradecerme siguiéndome: https://parzibyte.me/blog/sigueme/
-Y compartiendo mi blog con tus amigos
-También tengo canal de YouTube: https://www.youtube.com/channel/UCroP4BTWjfM0CkGB6AFUoBg?sub_confirmation=1
-------------------------------------------------------------------------------------------------
-*/ ?><?php
-function getEmployeesWithAttendanceCount($start, $end)
+?>
+<?php
+function getAlumnosWithAsistenciaCount($start, $end)
 {
     $query = "select alumnos.nombre, 
 sum(case when status = 'presente' then 1 else 0 end) as presence_count,
@@ -41,9 +16,9 @@ sum(case when status = 'ausente' then 1 else 0 end) as absence_count
     return $statement->fetchAll();
 }
 
-function saveAttendanceData($fecha, $alumnos)
+function saveAsistenciaData($fecha, $alumnos)
 {
-    deleteAttendanceDataByDate($fecha);
+    deleteAsistenciaDataByDate($fecha);
     $db = getDatabase();
     $db->beginTransaction();
     $statement = $db->prepare("INSERT INTO alumnos_asistencias(alumno_id, date, status) VALUES (?, ?, ?)");
@@ -54,13 +29,13 @@ function saveAttendanceData($fecha, $alumnos)
     return true;
 }
 
-function deleteAttendanceDataByDate($fecha)
+function deleteAsistenciaDataByDate($fecha)
 {
     $db = getDatabase();
     $statement = $db->prepare("DELETE FROM alumnos_asistencias WHERE date = ?");
     return $statement->execute([$fecha]);
 }
-function getAttendanceDataByDate($fecha)
+function getAsistenciaDataByDate($fecha)
 {
     $db = getDatabase();
     $statement = $db->prepare("SELECT alumno_id, status FROM alumnos_asistencias WHERE date = ?");
@@ -69,20 +44,20 @@ function getAttendanceDataByDate($fecha)
 }
 
 
-function deleteEmployee($id)
+function deleteAlumno($id)
 {
     $db = getDatabase();
     $statement = $db->prepare("DELETE FROM alumnos WHERE id = ?");
     return $statement->execute([$id]);
 }
 
-function updateEmployee($nombre, $id)
+function updateAlumno($nombre, $id)
 {
     $db = getDatabase();
     $statement = $db->prepare("UPDATE alumnos SET nombre = ? WHERE id = ?");
     return $statement->execute([$nombre, $id]);
 }
-function getEmployeeById($id)
+function getAlumnoById($id)
 {
     $db = getDatabase();
     $statement = $db->prepare("SELECT id, nombre FROM alumnos WHERE id = ?");
@@ -90,14 +65,14 @@ function getEmployeeById($id)
     return $statement->fetchObject();
 }
 
-function saveEmployee($nombre)
+function saveAlumno($nombre)
 {
     $db = getDatabase();
     $statement = $db->prepare("INSERT INTO alumnos(nombre) VALUES (?)");
     return $statement->execute([$nombre]);
 }
 
-function getEmployees()
+function getAlumnos()
 {
     $db = getDatabase();
     $statement = $db->query("SELECT id, nombre FROM alumnos");

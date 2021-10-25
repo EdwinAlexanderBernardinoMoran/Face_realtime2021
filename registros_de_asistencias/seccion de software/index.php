@@ -1,4 +1,4 @@
 <?php
 ?>
 <?php
-header("Location: employees.php");
+header("Location: alumnos.php");

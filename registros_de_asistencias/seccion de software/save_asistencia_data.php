@@ -4,5 +4,5 @@
 include_once "functions.php";
 $cargaUtil = json_decode(file_get_contents("php://input"));
 if (!$cargaUtil) exit("No data present");
-$respuesta = saveAttendanceData($cargaUtil->fecha, $cargaUtil->alumnos);
+$respuesta = saveAsistenciaData($cargaUtil->fecha, $cargaUtil->alumnos);
 echo json_encode($respuesta);

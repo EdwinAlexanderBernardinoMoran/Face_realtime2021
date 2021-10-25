@@ -11,16 +11,13 @@
     <div class="collapse navbar-collapse" id="menu">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="employees.php">Alumnos <i class="fa fa-users"></i></a>
+                <a class="nav-link" href="alumnos.php">Alumnos<i class="fa fa-users"></i></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="attendance_register.php">Registro de asistencias <i class="fa fa-check-double"></i></a>
+                <a class="nav-link" href="asistencia_register.php">Registro de asistencias<i class="fa fa-check-double"></i></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="attendance_report.php">Reporte de asistencias <i class="fa fa-file-alt"></i></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="//parzibyte.me/blog">Soporte y ayuda&nbsp;<i class="fa fa-hands-helping"></i></a>
+                <a class="nav-link" href="asistencia_report.php">Reporte de asistencias<i class="fa fa-file-alt"></i></a>
             </li>
         </ul>
     </div>
