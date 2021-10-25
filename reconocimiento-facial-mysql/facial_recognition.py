@@ -7,7 +7,7 @@ from mtcnn.mtcnn import MTCNN
 import database as db
 
 # CONFIGURACION
-path = "C:/Users/MINEDUCYT/Desktop/facial_recognition-main/img" # your path
+path = "C:/wamp64/www/Face_realtime2021/reconocimiento-facial-mysql" # your path
 txt_login = "Iniciar Sesión"
 txt_register = "Registrarse"
 
